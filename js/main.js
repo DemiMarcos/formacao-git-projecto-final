@@ -105,3 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener("click", toggleMenu);
   });
 });
+
+const navLink = document.querySelectorAll(".nav a");
+
+  navLink.forEach(link => {
+    link.addEventListener("click", () => {
+      navLink.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+    });
+  });
