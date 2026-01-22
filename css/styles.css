@@ -3,27 +3,34 @@
    ======================================== */
 
 
-:root{
-    --primary: #0b2a55;      /* azul escuro */
-    --primary-2: #0f4c81;    /* azul médio */
-    --accent: #f59e0b;       /* laranja/âmbar */
-    --accent-2: #ff7a18;     /* laranja mais vivo */
-    --bg: #f7fafc;           /* fundo suave */
-    --text: #0f172a;         /* texto */
-    --muted: #475569;        /* texto secundário */
+:root {
+    --primary: #0b2a55;
+    /* azul escuro */
+    --primary-2: #0f4c81;
+    /* azul médio */
+    --accent: #f59e0b;
+    /* laranja/âmbar */
+    --accent-2: #ff7a18;
+    /* laranja mais vivo */
+    --bg: #f7fafc;
+    /* fundo suave */
+    --text: #0f172a;
+    /* texto */
+    --muted: #475569;
+    /* texto secundário */
     --white: #ffffff;
     --border: rgba(15, 23, 42, 0.12);
     --shadow: 0 10px 30px rgba(2, 6, 23, 0.12);
 }
 
-body{
+body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     color: var(--text);
     background-color: var(--white);
 }
 
 
-   
+
 
 /* Reset e Base */
 * {
@@ -53,14 +60,17 @@ body {
    Header e Navegação
    ======================================== */
 .header {
-    background-color: var(--primary);
+    background-color: rgba(11, 42, 85, 0.92);
     padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
+
 
 .header-content {
     display: flex;
@@ -83,13 +93,17 @@ body {
 .nav-list a {
     color: #fff;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    transition: color 0.25s ease, background 0.25s ease;
+    padding: 8px 10px;
+    border-radius: 10px;
 }
 
 .nav-list a:hover {
-    color: #93c5fd;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.10);
 }
+
 
 .menu-toggle {
     display: none;
@@ -130,11 +144,11 @@ body {
 }
 
 
-.hero{
+.hero {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
 }
 
-.hero-content{
+.hero-content {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 40px;
@@ -142,50 +156,50 @@ body {
     text-align: left;
 }
 
-.hero-text h2{
+.hero-text h2 {
     font-size: 3rem;
     line-height: 1.1;
     margin-bottom: 16px;
 }
 
-.hero-text p{
+.hero-text p {
     font-size: 1.15rem;
-    color: rgba(255,255,255,0.88);
+    color: rgba(255, 255, 255, 0.88);
     margin-bottom: 22px;
 }
 
-.hero-actions{
+.hero-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
 }
 
-.hero-box{
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.18);
+.hero-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 14px;
     padding: 22px;
     box-shadow: var(--shadow);
 }
 
-.hero-box h3{
+.hero-box h3 {
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
 
-.hero-box ul{
+.hero-box ul {
     list-style: none;
     display: grid;
     gap: 10px;
     margin-top: 10px;
 }
 
-.hero-box li{
-    color: rgba(255,255,255,0.9);
+.hero-box li {
+    color: rgba(255, 255, 255, 0.9);
 }
 
-@media (max-width: 900px){
-    .hero-content{
+@media (max-width: 900px) {
+    .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
@@ -198,22 +212,38 @@ body {
    Botões
    ======================================== */
 .btn {
-    display: inline-block;
-    background-color: #ed8936;
-    color: #fff;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 10px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
 }
 
 .btn:hover {
-    background-color: #dd6b20;
+    transform: translateY(-1px);
 }
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    color: var(--white);
+    border: none;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
 
 /* ========================================
    Secção de Serviços
