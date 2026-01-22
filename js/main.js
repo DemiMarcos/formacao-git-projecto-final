@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav');
 
-    if (menuToggle) {
+    if (menuToggle && nav) {
         menuToggle.addEventListener('click', function() {
             nav.classList.toggle('active');
         });
@@ -27,11 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const nome = document.getElementById('nome').value.trim();
             const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const entidade = document.getElementById('entidade').value.trim();
             const assunto = document.getElementById('assunto').value;
+            const urgencia = document.getElementById('urgencia').value;
             const mensagem = document.getElementById('mensagem').value.trim();
+            const preferencia = document.querySelector('input[name="preferencia"]:checked');
+            const consentimento = document.getElementById('consentimento');
 
             // Validações básicas
-            if (nome.length < 3) {
+            if (!validarNome(nome)) {
                 alert('Por favor, insira um nome válido.');
                 return;
             }
@@ -41,13 +46,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
+            if (!validarTelefone(telefone)) {
+                alert('Por favor, insira um telefone válido.');
+                return;
+            }
+
+            if (entidade && entidade.length < 2) {
+                alert('Por favor, insira um organismo/departamento válido.');
+                return;
+            }
+
             if (!assunto) {
                 alert('Por favor, selecione um assunto.');
                 return;
             }
 
-            if (mensagem.length < 10) {
-                alert('A mensagem deve ter pelo menos 10 caracteres.');
+            if (!urgencia) {
+                alert('Por favor, selecione a prioridade.');
+                return;
+            }
+
+            if (!preferencia) {
+                alert('Por favor, selecione a preferência de contacto.');
+                return;
+            }
+
+            if (mensagem.length < 20) {
+                alert('A mensagem deve ter pelo menos 20 caracteres.');
+                return;
+            }
+
+            if (!consentimento || !consentimento.checked) {
+                alert('Por favor, aceite o tratamento dos dados para prosseguir.');
                 return;
             }
 
@@ -57,10 +87,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Função para validar nome
+    function validarNome(nome) {
+        return nome.length >= 3 && /[A-Za-zÀ-ÿ]/.test(nome);
+    }
+
     // Função para validar email
     function validarEmail(email) {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
+    }
+
+    // Função para validar telefone
+    function validarTelefone(telefone) {
+        const regex = /^\+?[0-9\s-]{9,15}$/;
+        return regex.test(telefone);
     }
 
     // ========================================
@@ -70,7 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     navLinks.forEach(function(link) {
         link.addEventListener('click', function() {
-            nav.classList.remove('active');
+            if (nav) {
+                nav.classList.remove('active');
+            }
         });
     });
 
@@ -80,10 +123,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.header');
     
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.style.backgroundColor = '#122744';
-        } else {
-            header.style.backgroundColor = '#1a365d';
+        if (header) {
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = '#122744';
+            } else {
+                header.style.backgroundColor = '#1a365d';
+            }
         }
     });
 
@@ -104,6 +149,25 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll(".nav a").forEach(link => {
     link.addEventListener("click", toggleMenu);
   });
+    // ========================================
+    // Scroll to top
+    // ========================================
+    const scrollTopBtn = document.querySelector('.scroll-top');
+
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
 });
 
 const navLink = document.querySelectorAll(".nav a");

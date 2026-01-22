@@ -21,6 +21,7 @@
                         <li><a href="#inicio"><i class="fa-solid fa-house"></i> Início</a></li>
                         <li><a href="#sobre"><i class="fa-solid fa-circle-info"></i> Sobre</a></li>
                         <li><a href="#servicos"><i class="fa-solid fa-gear"></i> Serviços</a></li>
+                        <li><a href="#faq"><i class="fa-solid fa-info"></i> FAQ</a></li>
                         <li><a href="#contacto"><i class="fa-solid fa-envelope"></i> Contacto</a></li>
                     </ul>
                 </nav>
@@ -75,6 +76,30 @@
         </div>
     </section>
 
+    <!-- Notícias Section -->
+    <section id="noticias" class="noticias">
+        <div class="container">
+            <h2 class="section-title">Notícias e Actualizações</h2>
+            <div class="noticias-grid">
+                <article class="noticia-card">
+                    <h3>Portal de Serviços 2.0</h3>
+                    <p>Nova versão do portal com processos mais rápidos e acompanhamento em tempo real.</p>
+                    <span class="noticia-data">12 Mar 2025</span>
+                </article>
+                <article class="noticia-card">
+                    <h3>Integração com Sistemas Nacionais</h3>
+                    <p>Ligação segura entre sistemas financeiros para melhorar a partilha de dados.</p>
+                    <span class="noticia-data">28 Fev 2025</span>
+                </article>
+                <article class="noticia-card">
+                    <h3>Capacitação Técnica</h3>
+                    <p>Programa contínuo de formação para reforçar a qualidade do suporte aos utilizadores.</p>
+                    <span class="noticia-data">10 Jan 2025</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- Sobre Section -->
     <section id="sobre" class="sobre">
         <div class="container">
@@ -108,6 +133,27 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Como solicitar suporte técnico?</summary>
+                    <p>Registe o seu pedido através do formulário de contacto e selecione o assunto adequado.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Qual o tempo médio de resposta?</summary>
+                    <p>Pedidos classificados como alta prioridade são respondidos em até 4 horas úteis.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Posso acompanhar o estado do meu pedido?</summary>
+                    <p>Sim. Após o envio, receberá um email com o número de referência para acompanhamento.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Contacto Section -->
     <section id="contacto" class="contacto">
         <div class="container">
@@ -121,27 +167,66 @@
                     <p><strong>Horário:</strong> Segunda a Sexta, 8h - 17h</p>
                 </div>
                 <form class="contacto-form" id="form-contacto">
-                    <div class="form-group">
-                        <label for="nome">Nome Completo</label>
-                        <input type="text" id="nome" name="nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="assunto">Assunto</label>
-                        <select id="assunto" name="assunto" required>
-                            <option value="">Selecione um assunto</option>
-                            <option value="suporte">Suporte Técnico</option>
-                            <option value="informacao">Pedido de Informação</option>
-                            <option value="parceria">Proposta de Parceria</option>
-                            <option value="outro">Outro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensagem">Mensagem</label>
-                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="+244 9XX XXX XXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="entidade">Organismo/Departamento</label>
+                            <input type="text" id="entidade" name="entidade" autocomplete="organization" placeholder="Ministério, direcção ou unidade">
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto" name="assunto" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="informacao">Pedido de Informação</option>
+                                <option value="parceria">Proposta de Parceria</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="urgencia">Prioridade</label>
+                            <select id="urgencia" name="urgencia" required>
+                                <option value="">Selecione a prioridade</option>
+                                <option value="baixa">Baixa</option>
+                                <option value="media">Média</option>
+                                <option value="alta">Alta</option>
+                                <option value="critica">Crítica</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Preferência de contacto</label>
+                            <div class="form-options">
+                                <label class="option">
+                                    <input type="radio" name="preferencia" value="email" checked>
+                                    Email
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="preferencia" value="telefone">
+                                    Telefone
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-check">
+                                <input type="checkbox" id="consentimento" name="consentimento" required>
+                                Autorizo o tratamento dos meus dados para fins de contacto.
+                            </label>
+                        </div>
                     </div>
                     <button type="submit" class="btn">Enviar Mensagem</button>
                 </form>
@@ -153,25 +238,57 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
+                <div class="footer-brand">
                     <h3>SETIC</h3>
                     <p>Serviço de Tecnologias de Informação e Comunicação</p>
+                    <div class="footer-contact">
+                        <p><span>Endereço:</span> Luanda, Angola</p>
+                        <p><span>Telefone:</span> +244 222 000 000</p>
+                        <p><span>Email:</span> contacto@setic.gov.ao</p>
+                    </div>
                 </div>
                 <div class="footer-links">
-                    <h4>Links Rápidos</h4>
+                    <h4>Mapa do Site</h4>
                     <ul>
                         <li><a href="#inicio">Início</a></li>
                         <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#noticias">Notícias</a></li>
                         <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                         <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Desenvolvimento de Software</a></li>
+                        <li><a href="#servicos">Segurança da Informação</a></li>
+                        <li><a href="#servicos">Infraestrutura Cloud</a></li>
+                        <li><a href="#servicos">Análise de Dados</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Redes Sociais</h4>
+                    <ul class="social-list">
+                        <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+                        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+                        <li><a href="#" aria-label="X">X</a></li>
+                        <li><a href="#" aria-label="YouTube">YouTube</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 SETIC - Todos os direitos reservados</p>
+                <div class="footer-legal">
+                    <a href="#">Política de Privacidade</a>
+                    <span>|</span>
+                    <a href="#">Termos de Utilização</a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <button class="scroll-top" type="button" aria-label="Voltar ao topo">Topo</button>
 
     <script src="js/main.js"></script>
 </body>
