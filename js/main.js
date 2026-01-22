@@ -114,3 +114,38 @@ const navLink = document.querySelectorAll(".nav a");
       link.classList.add("active");
     });
   });
+
+  function smoothScrollTo(target, duration = 1500) { // aumente para 2000, 3000…
+    const start = window.pageYOffset;
+    const end = target.getBoundingClientRect().top + start - 90; // ajuste do header
+    const distance = end - start;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      // easing suave (easeInOut)
+      const ease =
+        progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+      window.scrollTo(0, start + distance * ease);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    }
+
+    requestAnimationFrame(animation);
+  }
+
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) smoothScrollTo(target, 1200); //bem lento
+    });
+  });
