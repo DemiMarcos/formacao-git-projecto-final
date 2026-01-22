@@ -87,4 +87,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+      const menuBtn = document.getElementById("menuBtn");
+  const nav2 = document.getElementById("nav");
+  const overlay = document.getElementById("navOverlay");
+
+  function toggleMenu() {
+    menuBtn.classList.toggle("active");
+    nav2.classList.toggle("active");
+    overlay.classList.toggle("active");
+  }
+
+  menuBtn.addEventListener("click", toggleMenu);
+  overlay.addEventListener("click", toggleMenu);
+
+  // Fecha o menu ao clicar num link
+  document.querySelectorAll(".nav a").forEach(link => {
+    link.addEventListener("click", toggleMenu);
+  });
 });
