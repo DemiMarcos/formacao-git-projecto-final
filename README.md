@@ -27,5 +27,7 @@ Basta abrir o ficheiro `index.html` num navegador web.
 ## Equipa de Desenvolvimento
 
 - SETIC - Curso Git Hands-On
-
 ## Código feito na unha ##
+   
+## Equipa [FBO](https://github.com/fiauoliveira/portal-setic) 
+     
